@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProvaMobile</string>
+    <string-array name="spnFiltro">
+        <item>Apelido</item>
+        <item>Alugar</item>
+        <item>Comprar</item>
+    </string-array>
+</resources>
