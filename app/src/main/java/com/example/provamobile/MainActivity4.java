@@ -104,9 +104,8 @@ public class MainActivity4 extends AppCompatActivity {
     public void atualizar(MenuItem item) {
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final Imovel imovelAtualizar = imoveisComFiltro.get(menuInfo.position);
-
         Intent it = new Intent(this, MainActivity.class);
-        it.putExtra("imovel", String.valueOf(imovelAtualizar));
+        it.putExtra("imovel", imovelAtualizar);
         startActivity(it);
     }
 

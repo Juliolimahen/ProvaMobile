@@ -112,8 +112,8 @@ public class ImovelDAO implements InterfaceDAO {
         values.put("area", imovel.getArea());
         values.put("aluguel", imovel.getAluguel());
         values.put("comprar", imovel.getComprar());
-        values.put("queroAlugar", imovel.getQueroAlugar());
-        values.put("queroComprar", imovel.getQueroComprar());
+        //values.put("queroAlugar", imovel.getQueroAlugar());
+        //values.put("queroComprar", imovel.getQueroComprar());
         banco.update("imovel", values, "idImovel = ?", new String[]{String.valueOf((imovel.getIdImovel()))});
 
     }

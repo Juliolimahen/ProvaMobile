@@ -19,17 +19,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Bootstrap();
-        Intent it = getIntent();
+        //limparCampos();
 
+        Intent it = getIntent();
         if(it.hasExtra("imovel")){
+
             imovel = (Imovel) it.getSerializableExtra("imovel");
             apelido.setText(imovel.getApelido());
             local.setText(imovel.getLocal());
+            area.setText(imovel.getArea());
             aluguel.setText(imovel.getAluguel());
             comprar.setText(imovel.getComprar());
         }
     }
 
+    public void limparCampos(){
+
+        apelido.setText("");
+        local.setText("");
+        area.setText("");
+        aluguel.setText("");
+        comprar.setText("");
+
+    }
     private void Bootstrap(){
         btnAvançar = findViewById(R.id.btnAvancarTela1);
         apelido = findViewById(R.id.edtApelido);
@@ -52,6 +64,5 @@ public class MainActivity extends AppCompatActivity {
         i.putExtras(params);
         startActivity(i);
     }
-
 
 }
