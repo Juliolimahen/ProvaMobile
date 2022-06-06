@@ -33,7 +33,7 @@ public class MainActivity4 extends AppCompatActivity {
     TextView txtRes;
     String pesquisar = "todos";
 
-    Button btnNovoCadastro;
+    Button btnNovoCadastro, btnNovaPesquisa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,6 @@ public class MainActivity4 extends AppCompatActivity {
         setContentView(R.layout.activity_main4);
         Bootstrap();
         Listar();
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,6 +111,7 @@ public class MainActivity4 extends AppCompatActivity {
     private void Bootstrap() {
         lstImoveis = findViewById(R.id.lstImoveis);
         btnNovoCadastro = findViewById(R.id.btnNovoCadastro);
+        btnNovaPesquisa = findViewById(R.id.btnNovaPesquisar);
         txtRes = findViewById(R.id.txtRes);
 
         i = getIntent();
@@ -140,6 +140,11 @@ public class MainActivity4 extends AppCompatActivity {
 
     public void OnClickNovoCadastro(View v) {
         i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void OnClickNovaPesquisa(View v) {
+        i = new Intent(this, MainActivity3.class);
         startActivity(i);
     }
 }

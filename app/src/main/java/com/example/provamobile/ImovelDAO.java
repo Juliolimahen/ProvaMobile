@@ -18,29 +18,6 @@ public class ImovelDAO implements InterfaceDAO {
         banco = conexao.getWritableDatabase();
     }
 
-
-    /*public List<Imovel> obterTodos(){
-        List<Imovel> imoveis = new ArrayList<>();
-        Cursor cursor = banco.query("imovel", new String[]{"idImovel", "apelido", "local", "area", "aluguel", "comprar", "queroAlugar", "queroComprar"},
-                null, null, null, null, null);
-
-        //Verfica se consegue mover para o proximo registro
-        while (cursor.moveToNext()){
-            Imovel imovel= new Imovel();
-            imovel.setIdImovel(cursor.getInt(0));
-            imovel.setApelido(cursor.getString(1));
-            imovel.setLocal(cursor.getString(2));
-            imovel.setArea(cursor.getString(3));
-            imovel.setAluguel(cursor.getString(4));
-            imovel.setComprar(cursor.getString(5));
-            imovel.setQueroAlugar(cursor.getString(6));
-            imovel.setQueroComprar(cursor.getString(7));
-
-            imoveis.add(imovel);
-        }
-        return imoveis;
-    }*/
-
     public List<Imovel> obterImoveis(String param) {
         List<Imovel> imoveis;
         Cursor cursor;
@@ -99,6 +76,7 @@ public class ImovelDAO implements InterfaceDAO {
     public void deletar(Object obj) {
         Imovel imovel = (Imovel) obj;
         banco.delete("imovel", "idImovel = ?", new String[]{String.valueOf((imovel.getIdImovel()))});
+        //banco.delete("imovel", null, null);
         //return 0;
     }
 

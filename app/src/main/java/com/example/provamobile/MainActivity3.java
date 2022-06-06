@@ -16,7 +16,7 @@ public class MainActivity3 extends AppCompatActivity {
     Intent i;
     Bundle params;
     Button btnAvançar;
-    String apelido, local, area, aluguel, comprar, queroAlugar, queroComprar;
+    String apelido, local, area, aluguel, comprar, queroAlugar, queroComprar, salvar = "NOT";
 
     EditText edtPesquisar;
 
@@ -45,26 +45,28 @@ public class MainActivity3 extends AppCompatActivity {
             comprar = params.getString("comprar");
             queroAlugar = params.getString("queroAlugar");
             queroComprar = params.getString("queroComprar");
+            salvar = params.getString("salvar");
         }
     }
 
     private void salvar() {
-        if (imovel == null) {
+        if(salvar.toUpperCase().equalsIgnoreCase("OK")) {
+            if (imovel == null) {
 
-            imovel = new Imovel(apelido, local, area, aluguel, comprar, queroAlugar, queroComprar);
-            imovelDao = new ImovelDAO(this);
+                imovel = new Imovel(apelido, local, area, aluguel, comprar, queroAlugar, queroComprar);
+                imovelDao = new ImovelDAO(this);
 
-            imovelDao.inserir(imovel);
-
-        } else {
-            imovel.setApelido(apelido);
-            imovel.setLocal(local);
-            imovel.setArea(area);
-            imovel.setAluguel(aluguel);
-            imovel.setComprar(comprar);
-            imovel.setQueroAlugar(queroAlugar);
-            imovel.setQueroComprar(queroComprar);
-            imovelDao.atualizar(imovel);
+                imovelDao.inserir(imovel);
+            } else {
+                imovel.setApelido(apelido);
+                imovel.setLocal(local);
+                imovel.setArea(area);
+                imovel.setAluguel(aluguel);
+                imovel.setComprar(comprar);
+                imovel.setQueroAlugar(queroAlugar);
+                imovel.setQueroComprar(queroComprar);
+                imovelDao.atualizar(imovel);
+            }
         }
     }
 
