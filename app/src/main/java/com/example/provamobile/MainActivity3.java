@@ -29,7 +29,7 @@ public class MainActivity3 extends AppCompatActivity {
     }
 
 
-    private void Bootstrap(){
+    private void Bootstrap() {
         btnAvançar = findViewById(R.id.btnAvancarTela3);
         edtPesquisar = findViewById(R.id.edtPesquisar);
         //Pegando parametros tela 2
@@ -37,8 +37,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         params = i.getExtras();
 
-        if(params!=null)
-        {
+        if (params != null) {
             apelido = params.getString("apelido");
             local = params.getString("local");
             area = params.getString("area");
@@ -49,24 +48,35 @@ public class MainActivity3 extends AppCompatActivity {
         }
     }
 
-    private void salvar(){
+    private void salvar() {
+        if (imovel == null) {
 
-        imovel = new Imovel(apelido, local, area, aluguel, comprar, queroAlugar, queroComprar);
-        imovelDao = new ImovelDAO(this);
+            imovel = new Imovel(apelido, local, area, aluguel, comprar, queroAlugar, queroComprar);
+            imovelDao = new ImovelDAO(this);
 
-        imovelDao.inserir(imovel);
+            imovelDao.inserir(imovel);
+
+        } else {
+            imovel.setApelido(apelido);
+            imovel.setLocal(local);
+            imovel.setArea(area);
+            imovel.setAluguel(aluguel);
+            imovel.setComprar(comprar);
+            imovel.setQueroAlugar(queroAlugar);
+            imovel.setQueroComprar(queroComprar);
+            imovelDao.atualizar(imovel);
+        }
     }
 
-    public void OnClickAvancar(View v){
+    public void OnClickAvancar(View v) {
         String pesq = edtPesquisar.getText().toString();
 
-        if(pesq.toUpperCase().equalsIgnoreCase("PESQUISAR") || pesq.trim().equalsIgnoreCase("")
-                || pesq.equalsIgnoreCase(null) || pesq.toUpperCase().equalsIgnoreCase("TODOS"))
-        {
+        if (pesq.toUpperCase().equalsIgnoreCase("PESQUISAR") || pesq.trim().equalsIgnoreCase("")
+                || pesq.equalsIgnoreCase(null) || pesq.toUpperCase().equalsIgnoreCase("TODOS")) {
             pesq = "todos";
-        }else if(pesq.toUpperCase().equalsIgnoreCase("ALUGAR")){
+        } else if (pesq.toUpperCase().equalsIgnoreCase("ALUGAR")) {
             pesq = "alugar";
-        }else if(pesq.toUpperCase().equalsIgnoreCase("COMPRAR")){
+        } else if (pesq.toUpperCase().equalsIgnoreCase("COMPRAR")) {
             pesq = "comprar";
         }
 

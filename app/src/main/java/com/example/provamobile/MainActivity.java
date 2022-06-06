@@ -13,11 +13,21 @@ public class MainActivity extends AppCompatActivity {
     Intent i;
     Button btnAvançar;
     EditText apelido, local, area, aluguel, comprar;
+    private Imovel imovel=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Bootstrap();
+        Intent it = getIntent();
+
+        if(it.hasExtra("imovel")){
+            imovel = (Imovel) it.getSerializableExtra("imovel");
+            apelido.setText(imovel.getApelido());
+            local.setText(imovel.getLocal());
+            aluguel.setText(imovel.getAluguel());
+            comprar.setText(imovel.getComprar());
+        }
     }
 
     private void Bootstrap(){

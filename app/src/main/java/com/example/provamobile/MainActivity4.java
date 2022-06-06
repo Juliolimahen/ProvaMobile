@@ -43,12 +43,13 @@ public class MainActivity4 extends AppCompatActivity {
         Listar();
 
     }
-    public boolean onCreateOptionsMenu(Menu menu){
+
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater i = getMenuInflater();
         i.inflate(R.menu.menu_principal, menu);
 
         SearchView sv = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -63,24 +64,24 @@ public class MainActivity4 extends AppCompatActivity {
         return true;
     }
 
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater i = getMenuInflater();
         i.inflate(R.menu.menu_contexto, menu);
     }
 
-    public void procuraImovel( String nome){
+    public void procuraImovel(String nome) {
         imoveisComFiltro.clear();
-        for (Imovel i : imoveis ){
+        for (Imovel i : imoveis) {
             //Coparar se tem clietes Com filtro na lista de clientes
-            if (i.getApelido().toLowerCase().contains(nome.toLowerCase())){
+            if (i.getApelido().toLowerCase().contains(nome.toLowerCase())) {
                 imoveisComFiltro.add(i);
             }
         }
         lstImoveis.invalidateViews();
     }
 
-    public void excluir(MenuItem item){
+    public void excluir(MenuItem item) {
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final Imovel imovelExcluir = imoveisComFiltro.get(menuInfo.position);
 
@@ -100,7 +101,16 @@ public class MainActivity4 extends AppCompatActivity {
         dialog.show();
     }
 
-    private void Bootstrap(){
+    public void atualizar(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        final Imovel imovelAtualizar = imoveisComFiltro.get(menuInfo.position);
+
+        Intent it = new Intent(this, MainActivity.class);
+        it.putExtra("imovel", String.valueOf(imovelAtualizar));
+        startActivity(it);
+    }
+
+    private void Bootstrap() {
         lstImoveis = findViewById(R.id.lstImoveis);
         btnNovoCadastro = findViewById(R.id.btnNovoCadastro);
         txtRes = findViewById(R.id.txtRes);
@@ -108,15 +118,14 @@ public class MainActivity4 extends AppCompatActivity {
         i = getIntent();
         params = i.getExtras();
 
-        if(params!=null)
-        {
+        if (params != null) {
             pesquisar = params.getString("pesquisa");
         }
 
         txtRes.setText(pesquisar);
     }
 
-    private void Listar(){
+    private void Listar() {
         imovelDao = new ImovelDAO(this);
         imoveis = imovelDao.obterImoveis(pesquisar);
 
@@ -130,7 +139,7 @@ public class MainActivity4 extends AppCompatActivity {
 
     }
 
-    public void OnClickNovoCadastro(View v){
+    public void OnClickNovoCadastro(View v) {
         i = new Intent(this, MainActivity.class);
         startActivity(i);
     }

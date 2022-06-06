@@ -11,7 +11,8 @@ public class Imovel {
     private String queroAlugar;
     private String queroComprar;
 
-    public Imovel(){}
+    public Imovel() {
+    }
 
     public Imovel(String apelido, String local, String area, String aluguel, String comprar, String queroAlugar, String queroComprar) {
         this.apelido = apelido;
@@ -88,9 +89,8 @@ public class Imovel {
     }
 
     @Override
-    public String toString(){
-        return "Apelido: "+apelido+"\nLocal: "+ local+" - Area: "+ area+"M²"+"\nAluguel R$:"+ aluguel+" - Comprar R$:" + comprar +
-                "\nQuero Alugar: "+ queroAlugar+" - Quero Comprar: "+ queroComprar;
+    public String toString() {
+        return "Apelido: " + apelido + "\nLocal: " + local + " - Area: " + area + "M²" + "\nAluguel R$:" + aluguel + " - Comprar R$:" + comprar +
+                "\nQuero Alugar: " + queroAlugar + " - Quero Comprar: " + queroComprar;
     }
-
 }
