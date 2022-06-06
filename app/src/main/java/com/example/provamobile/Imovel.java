@@ -1,6 +1,8 @@
 package com.example.provamobile;
 
-public class Imovel {
+import java.io.Serializable;
+
+public class Imovel implements Serializable {
 
     private int idImovel;
     private String apelido;
@@ -90,7 +92,7 @@ public class Imovel {
 
     @Override
     public String toString() {
-        return "Apelido: " + apelido + "\nLocal: " + local + " - Area: " + area + "M²" + "\nAluguel R$:" + aluguel + " - Comprar R$:" + comprar +
-                "\nQuero Alugar: " + queroAlugar + " - Quero Comprar: " + queroComprar;
+        return "Apelido: "+apelido+"\nLocal: "+ local+" - Area: "+ area+"M²"+"\nAluguel R$:"+ aluguel+" - Comprar R$:" + comprar +
+                "\nQuero Alugar: "+ queroAlugar+" - Quero Comprar: "+ queroComprar;
     }
 }
