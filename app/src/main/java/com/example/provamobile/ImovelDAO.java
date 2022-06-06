@@ -76,6 +76,7 @@ public class ImovelDAO implements InterfaceDAO {
     public void deletar(Object obj) {
         Imovel imovel = (Imovel) obj;
         banco.delete("imovel", "idImovel = ?", new String[]{String.valueOf((imovel.getIdImovel()))});
+        //banco.delete("imovel", null, null);
         //return 0;
     }
 

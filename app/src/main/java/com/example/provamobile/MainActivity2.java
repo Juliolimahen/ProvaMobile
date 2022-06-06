@@ -67,9 +67,6 @@ public class MainActivity2 extends AppCompatActivity {
                 }
                 break;
         }
-
-
-
     }
 
     public void OnClickAvancar(View v){
@@ -85,7 +82,7 @@ public class MainActivity2 extends AppCompatActivity {
         //atuais
         params.putString("queroAlugar", checkAlugar);
         params.putString("queroComprar", checkComprar);
-
+        params.putString("salvar", "OK");
 
         i.putExtras(params);
         startActivity(i);
