@@ -19,14 +19,13 @@ public class MainActivity3 extends AppCompatActivity {
     private Button btnAvançar;
     private String apelido, local, area, aluguel, comprar, queroAlugar, queroComprar, salvar = "NOT", atualizar = "NOT";
     private Integer id = 0;
-    private TextView txt;
     private EditText edtPesquisar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        txt = findViewById(R.id.txtTeste);
+
         id = 1;
         Bootstrap();
 
@@ -35,7 +34,6 @@ public class MainActivity3 extends AppCompatActivity {
         if(it.hasExtra("att")){
             atualizar = params.getString("att");
             id = params.getInt("id");
-            txt.setText("id: " + id);
         }
         salvar();
     }

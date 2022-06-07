@@ -121,7 +121,6 @@ public class MainActivity4 extends AppCompatActivity {
             pesquisar = params.getString("pesquisa");
         }
 
-        txtRes.setText(pesquisar);
     }
 
     private void Listar() {

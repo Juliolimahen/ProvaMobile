@@ -4,55 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shape_app_categorias"
     tools:context=".MainActivity4"
     tools:layout_editor_absoluteX="2dp"
     tools:layout_editor_absoluteY="0dp">
 
-    <Button
-        android:id="@+id/btnNovoCadastro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:onClick="OnClickNovoCadastro"
-        android:text="Novo Cadastro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnNovaPesquisar"
-        app:layout_constraintHorizontal_bias="0.368"
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="168dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtRes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lstImoveis" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/txtRes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Resultado"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.959" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="382dp"
+        android:layout_height="393dp"
+        android:background="@drawable/shape_container_categorias"
+        android:orientation="vertical"
+        android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.616">
 
-    <ListView
-        android:id="@+id/lstImoveis"
-        android:layout_width="409dp"
-        android:layout_height="372dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="1dp"
+        <ListView
+            android:id="@+id/lstImoveis"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNovoCadastro"
+        android:layout_width="139dp"
+        android:layout_height="66dp"
+        android:backgroundTint="@color/white"
+        android:onClick="OnClickNovoCadastro"
+        android:text="Novo Cadastro"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRes"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.253" />
 
     <Button
         android:id="@+id/btnNovaPesquisar"
-        android:layout_width="163dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="139dp"
+        android:layout_height="66dp"
+        android:backgroundTint="@color/white"
         android:onClick="OnClickNovaPesquisa"
         android:text="NOVA PESQUISA"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lstImoveis" />
+        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.253" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

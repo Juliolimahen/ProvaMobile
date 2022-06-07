@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProvaMobile</string>
+    <string name="app_name">House Master</string>
     <string-array name="spnFiltro">
         <item>Apelido</item>
         <item>Alugar</item>

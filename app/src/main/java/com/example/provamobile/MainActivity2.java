@@ -18,7 +18,6 @@ public class MainActivity2 extends AppCompatActivity {
     private CheckBox chbAlugar, chbComprar;
     private String checkAlugar = "nao", checkComprar = "nao";
     private String apelido, local, area, aluguel, comprar;
-    private TextView txt;
     private String atualizar = "NOT", updAlugar="NOT", updComprar="NOT";
     private int id;
 
@@ -27,7 +26,6 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Bootstrap();
-        txt = findViewById(R.id.txtTest);
 
         Intent it = getIntent();
         if(it.hasExtra("atualizar")){
@@ -35,7 +33,6 @@ public class MainActivity2 extends AppCompatActivity {
             updAlugar = params.getString("updQueroAlugar");
             updComprar = params.getString("updQueroComprar");
             id = params.getInt("id");
-            txt.setText("id: " + id);
         }
 
         if(atualizar.toUpperCase().equalsIgnoreCase("UPD")){
