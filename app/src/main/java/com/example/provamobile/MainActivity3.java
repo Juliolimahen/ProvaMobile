@@ -8,23 +8,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity3 extends AppCompatActivity {
 
-    Imovel imovel;
-    ImovelDAO imovelDao;
-    Intent i;
-    Bundle params;
-    Button btnAvançar;
-    String apelido, local, area, aluguel, comprar, queroAlugar, queroComprar, salvar = "NOT";
-
-    EditText edtPesquisar;
+    private Imovel imovel;
+    private ImovelDAO imovelDao;
+    private Intent i;
+    private Bundle params;
+    private Button btnAvançar;
+    private String apelido, local, area, aluguel, comprar, queroAlugar, queroComprar, salvar = "NOT", atualizar = "NOT";
+    private Integer id = 0;
+    private TextView txt;
+    private EditText edtPesquisar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        txt = findViewById(R.id.txtTeste);
+        id = 1;
         Bootstrap();
+
+        Intent it = getIntent();
+
+        if(it.hasExtra("att")){
+            atualizar = params.getString("att");
+            id = params.getInt("id");
+            txt.setText("id: " + id);
+        }
         salvar();
     }
 
@@ -51,21 +63,16 @@ public class MainActivity3 extends AppCompatActivity {
 
     private void salvar() {
         if(salvar.toUpperCase().equalsIgnoreCase("OK")) {
-            if (imovel == null) {
+            if (atualizar.toUpperCase().equalsIgnoreCase("UPD")) {
+                imovel = new Imovel(apelido, local, area, aluguel, comprar, queroAlugar, queroComprar);
+                imovelDao = new ImovelDAO(this);
+                imovelDao.atualizar(imovel, id);
 
+            } else {
                 imovel = new Imovel(apelido, local, area, aluguel, comprar, queroAlugar, queroComprar);
                 imovelDao = new ImovelDAO(this);
 
                 imovelDao.inserir(imovel);
-            } else {
-                imovel.setApelido(apelido);
-                imovel.setLocal(local);
-                imovel.setArea(area);
-                imovel.setAluguel(aluguel);
-                imovel.setComprar(comprar);
-                imovel.setQueroAlugar(queroAlugar);
-                imovel.setQueroComprar(queroComprar);
-                imovelDao.atualizar(imovel);
             }
         }
     }
@@ -85,7 +92,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         i = new Intent(this, MainActivity4.class);
         Bundle param = new Bundle();
-        param.putString("pesquisa", pesq);
+        param.putString("pesquisa", pesq.toUpperCase());
 
         i.putExtras(param);
         startActivity(i);

@@ -5,5 +5,5 @@ public interface InterfaceDAO {
 
     public void deletar(Object obj);
 
-    public void atualizar(Object obj);
+    public long atualizar(Object obj, int id);
 }

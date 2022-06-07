@@ -28,12 +28,12 @@ public class MainActivity4 extends AppCompatActivity {
     private ImovelDAO imovelDao;
     private List<Imovel> imoveis;
     private List<Imovel> imoveisComFiltro = new ArrayList<>();
-    Intent i;
-    Bundle params;
-    TextView txtRes;
-    String pesquisar = "todos";
+    private Intent i;
+    private Bundle params;
+    private TextView txtRes;
+    private String pesquisar = "todos";
 
-    Button btnNovoCadastro, btnNovaPesquisa;
+    private Button btnNovoCadastro, btnNovaPesquisa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

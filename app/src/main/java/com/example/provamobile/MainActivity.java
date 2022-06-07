@@ -10,9 +10,9 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Intent i;
-    Button btnAvançar;
-    EditText apelido, local, area, aluguel, comprar;
+    private Intent i;
+    private Button btnAvançar;
+    private EditText apelido, local, area, aluguel, comprar;
     private Imovel imovel=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
         params.putString("area", area.getText().toString());
         params.putString("aluguel", aluguel.getText().toString());
         params.putString("comprar", comprar.getText().toString());
+
+        if(imovel != null){
+            params.putString("atualizar", "UPD");
+            params.putString("updQueroAlugar", imovel.getQueroAlugar());
+            params.putString("updQueroComprar", imovel.getQueroComprar());
+            params.putInt("id", imovel.getIdImovel());
+        }
 
         i.putExtras(params);
         startActivity(i);

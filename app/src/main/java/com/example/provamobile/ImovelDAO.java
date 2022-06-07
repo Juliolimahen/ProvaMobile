@@ -61,7 +61,7 @@ public class ImovelDAO implements InterfaceDAO {
     public long inserir(Object obj) {
         Imovel imovel = (Imovel) obj;
         ContentValues values = new ContentValues();
-        values.put("apelido", imovel.getApelido());
+        values.put("apelido", imovel.getApelido().toUpperCase());
         values.put("local", imovel.getLocal());
         values.put("area", imovel.getArea());
         values.put("aluguel", imovel.getAluguel());
@@ -81,18 +81,32 @@ public class ImovelDAO implements InterfaceDAO {
     }
 
     @Override
-    public void atualizar(Object obj) {
-        Imovel imovel = (Imovel) obj;
+    public long atualizar(Object obj, int id) {
+        Imovel imov = (Imovel) obj;
 
         ContentValues values = new ContentValues();
-        values.put("apelido", imovel.getApelido());
-        values.put("local", imovel.getLocal());
-        values.put("area", imovel.getArea());
-        values.put("aluguel", imovel.getAluguel());
-        values.put("comprar", imovel.getComprar());
-        //values.put("queroAlugar", imovel.getQueroAlugar());
-        //values.put("queroComprar", imovel.getQueroComprar());
-        banco.update("imovel", values, "idImovel = ?", new String[]{String.valueOf((imovel.getIdImovel()))});
-
+        values.put("apelido", imov.getApelido().toUpperCase());
+        values.put("local", imov.getLocal());
+        values.put("area", imov.getArea());
+        values.put("aluguel", imov.getAluguel());
+        values.put("comprar", imov.getComprar());
+        values.put("queroAlugar", imov.getQueroAlugar());
+        values.put("queroComprar", imov.getQueroComprar());
+        return banco.update("imovel", values, "idImovel = ?", new String[]{String.valueOf((id))});
     }
+
+    /*public void Att(Imovel imov){
+
+        ContentValues values = new ContentValues();
+        values.put("apelido", imov.getApelido());
+        values.put("local", imov.getLocal());
+        values.put("area", imov.getArea());
+        values.put("aluguel", imov.getAluguel());
+        values.put("comprar", imov.getComprar());
+        values.put("queroAlugar", imov.getQueroAlugar());
+        values.put("queroComprar", imov.getQueroComprar());
+        //banco.update("imovel", values, "idImovel = ?", new String[]{String.valueOf((imov.getIdImovel()))});
+        return banco.update("imovel", values, null, null);
+    }*/
+
 }
